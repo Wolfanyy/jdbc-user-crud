@@ -25,6 +25,12 @@ public class UserDaoImpl implements UserDao {
             WHERE id = ? 
             """;
 
+    private static final String FIND_BY_EMAIL = """
+            SELECT *
+            FROM users
+            WHERE email = ?
+            """;
+
     private static final String FIND_ALL = """
             SELECT * 
             FROM users
@@ -41,7 +47,6 @@ public class UserDaoImpl implements UserDao {
             FROM users
             WHERE id = ?
             """;
-
 
     @Override
     public User save(User user) {
@@ -89,6 +94,28 @@ public class UserDaoImpl implements UserDao {
 
         } catch (SQLException e) {
             throw new RuntimeException("Failed to find user by id", e);
+        }
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_EMAIL)) {
+
+            preparedStatement.setString(1, email);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                if (resultSet.next()) {
+                    return Optional.of(mapResultSetToUser(resultSet));
+                }
+
+                return Optional.empty();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to find user by email", e);
         }
     }
 
