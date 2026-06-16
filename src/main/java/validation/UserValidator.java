@@ -33,6 +33,18 @@ public class UserValidator {
         user.setEmail(user.getEmail() != null ? user.getEmail().trim().toLowerCase() : null);
     }
 
+
+    public void validateId(Long id) {
+
+        if (id == null) {
+            throw new ValidationException("Id cannot be null");
+        }
+
+        if (id <= 0) {
+            throw new ValidationException("Id must be positive");
+        }
+    }
+
     private void validateName(String name) {
 
         if (name == null || name.isBlank()) {
