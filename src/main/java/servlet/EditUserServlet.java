@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.User;
 import service.UserService;
 import util.AppContext;
+import util.UserRequestMapper;
 
 import java.io.IOException;
 
@@ -40,13 +41,7 @@ public class EditUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        User user = new User();
-
-        user.setId(Long.parseLong(request.getParameter("id")));
-        user.setName(request.getParameter("name"));
-        user.setLastName(request.getParameter("lastName"));
-        user.setEmail(request.getParameter("email"));
-        user.setAge(Integer.parseInt(request.getParameter("age")));
+        User user = UserRequestMapper.buildUser(request);
 
         userService.update(user);
 
