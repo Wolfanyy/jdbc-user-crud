@@ -93,7 +93,8 @@
 
                                     <button type="submit"
                                             class="btn btn-danger"
-                                            onclick="return confirm('Delete user?')">
+                                            onclick="return confirm(
+                                                    'Are you sure you want to delete ${user.name} ${user.lastName}?')">
                                         Delete
                                     </button>
 
