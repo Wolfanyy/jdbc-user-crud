@@ -17,6 +17,7 @@ public class UserListServlet extends HttpServlet {
 
     private UserService userService;
 
+    @Override
     public void init() {
         userService = AppContext.getUserService();
     }
