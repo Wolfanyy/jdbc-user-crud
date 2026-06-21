@@ -1,5 +1,6 @@
 package servlet;
 
+import exception.UserNotFoundException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,7 +30,7 @@ public class EditUserServlet extends HttpServlet {
         Long id = Long.parseLong(request.getParameter("id"));
 
         User user = userService.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new UserNotFoundException(id));
 
         request.setAttribute("user", user);
 
