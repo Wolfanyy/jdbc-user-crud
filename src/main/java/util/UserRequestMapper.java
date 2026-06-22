@@ -14,8 +14,8 @@ public class UserRequestMapper {
 
         String id = request.getParameter("id");
 
-        if (id != null && id.isBlank()) {
-            user.setId(Long.parseLong(id));
+        if (id != null && !id.isBlank()) {
+            user.setId(Long.valueOf(id));
         }
 
         user.setName(request.getParameter("name"));
