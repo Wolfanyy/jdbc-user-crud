@@ -143,7 +143,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean update(User user) {
+    public User update(User user) {
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER)) {
@@ -154,7 +154,9 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setInt(4, user.getAge());
             preparedStatement.setLong(5, user.getId());
 
-            return preparedStatement.executeUpdate() > 0;
+            preparedStatement.executeUpdate();
+
+            return user;
 
         } catch (SQLException e) {
             throw new RuntimeException("Failed to update user", e);
@@ -162,14 +164,14 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public void deleteById(Long id) {
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_BY_ID)) {
 
             preparedStatement.setLong(1, id);
 
-            return preparedStatement.executeUpdate() > 0;
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException("Failed to delete user by id", e);
