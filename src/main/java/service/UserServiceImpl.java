@@ -25,19 +25,17 @@ public class UserServiceImpl implements UserService {
 
         userValidator.validate(user);
 
-        if (userDao.findByEmail(user.getEmail()).isPresent()) {
-            throw new DuplicateEmailException(user.getEmail());
-        }
+        validateUniqueEmail(user);
 
         return userDao.save(user);
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public User findById(Long id) {
 
         userValidator.validateId(id);
 
-        return userDao.findById(id);
+        return getUserOrThrow(id);
     }
 
     @Override
@@ -46,7 +44,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean update(User user) {
+    public User update(User user) {
 
         userValidator.validate(user);
         userValidator.validateId(user.getId());
@@ -55,34 +53,41 @@ public class UserServiceImpl implements UserService {
 
         validateUniqueEmail(user);
 
-        return userDao.update(user);
+        userDao.update(user);
+
+        return user;
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public void deleteById(Long id) {
 
         userValidator.validateId(id);
 
         getUserOrThrow(id);
 
-        return userDao.deleteById(id);
+        userDao.deleteById(id);
     }
 
     private void validateUniqueEmail(User user) {
 
-        Optional<User> userWithSameEmail =
-                userDao.findByEmail(user.getEmail());
+        userDao.findByEmail(user.getEmail())
+                .ifPresent(existingUser -> {
 
-        if (userWithSameEmail.isPresent()
-                && !userWithSameEmail.get()
-                .getId()
-                .equals(user.getId())) {
+                    boolean anotherUserWithSameEmail =
+                            user.getId() == null
+                                    || !existingUser.getId()
+                                    .equals(user.getId());
 
-            throw new DuplicateEmailException(user.getEmail());
-        }
+                    if (anotherUserWithSameEmail) {
+                        throw new DuplicateEmailException(
+                                user.getEmail()
+                        );
+                    }
+                });
     }
 
     private User getUserOrThrow(Long id) {
+
         return userDao.findById(id)
                 .orElseThrow(() ->
                         new UserNotFoundException(id));

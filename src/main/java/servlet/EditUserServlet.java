@@ -29,8 +29,7 @@ public class EditUserServlet extends HttpServlet {
 
         Long id = Long.parseLong(request.getParameter("id"));
 
-        User user = userService.findById(id)
-                .orElseThrow(() -> new UserNotFoundException(id));
+        User user = userService.findById(id);
 
         request.setAttribute("user", user);
 
