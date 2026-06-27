@@ -1,6 +1,8 @@
 # User CRUD Application
 
 ![Java](https://img.shields.io/badge/Java-21-orange)
+![Jakarta Servlet](https://img.shields.io/badge/Jakarta%20Servlet-6.1-brightgreen)
+![JSP](https://img.shields.io/badge/JSP-4.0-darkgreen)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)
 ![Maven](https://img.shields.io/badge/Maven-3.9-red)
 ![Tomcat](https://img.shields.io/badge/Tomcat-10-yellow)
@@ -24,6 +26,7 @@ The application allows users to create, view, update, and delete user records wh
 * Global exception handling
 * Responsive user interface
 * Layered architecture (Servlet → Service → DAO)
+* MVC Pattern (Servlet + JSP)
 
 ## Technologies
 
@@ -61,13 +64,23 @@ Client Request
        ↓
 ExceptionHandlerFilter
        ↓
-Servlet Layer
+Servlet
        ↓
-Service Layer
+Service
        ↓
-DAO Layer
+DAO
        ↓
 PostgreSQL
+       ↑
+DAO
+       ↑
+Service
+       ↑
+Servlet
+       ↓
+JSP
+       ↓
+HTML Response
 ```
 
 ### Project Structure
