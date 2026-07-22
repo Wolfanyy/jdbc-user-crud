@@ -31,7 +31,7 @@ body {
 }
 
 .logo span {
-    color: #ffdd2d;
+    color: #38bdf8;
 }
 
 .container {
@@ -84,7 +84,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-    background: #fffdf3;
+    background: #f0f9ff;
 }
 
 .email {
@@ -112,19 +112,31 @@ tbody tr:hover {
 }
 
 .btn-primary {
-    color: #000;
-    background: #ffdd2d;
-    box-shadow: 0 4px 12px rgba(255, 221, 45, 0.25);
+    color: #ffffff;
+    background: #38bdf8;
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+}
+
+.btn-primary:hover {
+    background: #0ea5e9;
 }
 
 .btn-secondary {
-    color: #111;
-    background: #f3f4f6;
+    color: #0369a1;
+    background: #e0f2fe;
+}
+
+.btn-secondary:hover {
+    background: #bae6fd;
 }
 
 .btn-danger {
-    color: #d60000;
-    background: #ffeded;
+    color: #dc2626;
+    background: #fee2e2;
+}
+
+.btn-danger:hover {
+    background: #fecaca;
 }
 
 .actions-column {
@@ -218,7 +230,7 @@ tbody tr:hover {
 }
 
 .back-link:hover {
-    color: #111;
+    color: #2563eb;
     text-decoration: underline;
 }
 

@@ -94,7 +94,7 @@
                                     <button type="submit"
                                             class="btn btn-danger"
                                             onclick="return confirm(
-                                                    'Are you sure you want to delete ${user.name} ${user.lastName}?')">
+                                                    'Delete user ${user.name} ${user.lastName}?')">
                                         Delete
                                     </button>
 
