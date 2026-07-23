@@ -101,19 +101,22 @@ src/main/java
 
 ### Users List
 
-<img width="2534" height="1236" alt="image" src="https://github.com/user-attachments/assets/e2be003b-49a9-4064-80ea-6643de1e6a58" />
+<img width="1247" height="636" alt="Снимок экрана — 2026-07-23 в 19 13 11" src="https://github.com/user-attachments/assets/8a137298-cca1-4c0d-ad7d-b968432c2a79" />
+
 
 ### Create User
 
-<img width="556" height="525" alt="Снимок экрана — 2026-06-22 в 13 12 51" src="https://github.com/user-attachments/assets/33a3af2f-d785-46d5-880e-e5ce7b1a48f4" />
+<img width="575" height="536" alt="Снимок экрана — 2026-07-23 в 19 14 06" src="https://github.com/user-attachments/assets/212d0e24-87d5-4faf-9c11-ffb9702e1a03" />
+
 
 ### Edit User
 
-<img width="562" height="556" alt="image" src="https://github.com/user-attachments/assets/148ae92a-5c54-4f78-8c05-f418608c53d4" />
+<img width="582" height="568" alt="Снимок экрана — 2026-07-23 в 19 17 39" src="https://github.com/user-attachments/assets/87891e39-d597-44dd-96d3-9a8b55abfd5b" />
+
 
 ### Error Page
 
-<img width="555" height="313" alt="Снимок экрана — 2026-06-22 в 13 23 05" src="https://github.com/user-attachments/assets/15831b67-39ea-45f4-ac47-04b278ac0df6" />
+<img width="575" height="329" alt="Снимок экрана — 2026-07-23 в 19 14 31" src="https://github.com/user-attachments/assets/2547f139-ac91-4d27-be89-6a1d57d72da3" />
 
 
 ## Database Schema
